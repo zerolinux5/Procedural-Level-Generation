@@ -78,15 +78,22 @@
                 break;
         }
         //5
-        if([self.tiles isValidTileCoordinateAt:newPosition] &&
-           ![self.tiles isEdgeTileAt:newPosition] &&
-           [self.tiles tileTypeAt:newPosition] == MapTileTypeNone)
+            if([self.tiles isValidTileCoordinateAt:newPosition] &&
+               ![self.tiles isEdgeTileAt:newPosition] &&
+               [self.tiles tileTypeAt:newPosition] == MapTileTypeNone &&
+               currentFloorCount < self.maxFloorCount)
         {
             floorMaker.currentPosition = newPosition;
             [self.tiles setTileType:MapTileTypeFloor at:floorMaker.currentPosition];
             currentFloorCount++;
             _exitPoint = [self convertMapCoordinateToWorldCoordinate:floorMaker.currentPosition];
         }
+            if ( [self randomNumberBetweenMin:0 andMax:100] <= 50 )
+            {
+                FloorMaker *newFloorMaker = [[FloorMaker alloc] initWithCurrentPosition:floorMaker.currentPosition andDirection:[self randomNumberBetweenMin:1 andMax:4]];
+                
+                [self.floorMakers addObject:newFloorMaker];
+            }
         }];
     }
     // 6
