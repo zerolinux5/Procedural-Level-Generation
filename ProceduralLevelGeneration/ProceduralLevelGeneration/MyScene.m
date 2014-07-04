@@ -45,7 +45,9 @@ static const CGFloat kPlayerMovementSpeed = 100.0f;
         self.spriteAtlas = [SKTextureAtlas atlasNamed:@"sprites"];
         
         // Create a new map
-        self.map = [[Map alloc] init];
+        self.map = [[Map alloc] initWithGridSize:CGSizeMake(48, 48)];
+        self.map.maxFloorCount = 64;
+        [self.map generate];
         
         // Create the exit
         self.exit = [SKSpriteNode spriteNodeWithTexture:[self.spriteAtlas textureNamed:@"exit"]];

@@ -17,5 +17,6 @@
 
 + (instancetype) mapWithGridSize:(CGSize)gridSize;
 - (instancetype) initWithGridSize:(CGSize)gridSize;
+- (void) generate;
 
 @end
