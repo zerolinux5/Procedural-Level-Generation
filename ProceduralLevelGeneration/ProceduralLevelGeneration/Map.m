@@ -11,6 +11,8 @@
 
 @interface Map ()
 @property (nonatomic) MapTiles *tiles;
+@property (nonatomic) SKTextureAtlas *tileAtlas;
+@property (nonatomic) CGFloat tileSize;
 @end
 
 @implementation Map
@@ -27,6 +29,11 @@
         self.gridSize = gridSize;
         _spawnPoint = CGPointZero;
         _exitPoint = CGPointZero;
+        self.tileAtlas = [SKTextureAtlas atlasNamed:@"tiles"];
+        
+        NSArray *textureNames = [self.tileAtlas textureNames];
+        SKTexture *tileTexture = [self.tileAtlas textureNamed:(NSString *)[textureNames firstObject]];
+        self.tileSize = tileTexture.size.width;
     }
     return self;
 }
@@ -71,20 +78,53 @@
         }
     }
     // 6
-    _exitPoint = currentPosition;
+    _exitPoint = [self convertMapCoordinateToWorldCoordinate:currentPosition];
     // 7
     NSLog(@"%@", [self.tiles description]);
+    _spawnPoint = [self convertMapCoordinateToWorldCoordinate:startPoint];
 }
 
 - (void) generate
 {
     self.tiles = [[MapTiles alloc] initWithGridSize:self.gridSize];
     [self generateTileGrid];
+    [self generateTiles];
 }
 
 - (NSInteger) randomNumberBetweenMin:(NSInteger)min andMax:(NSInteger)max
 {
     return min + arc4random() % (max - min);
+}
+
+- (void) generateTiles
+{
+    // 1
+    for ( NSInteger y = 0; y < self.tiles.gridSize.height; y++ )
+    {
+        for ( NSInteger x = 0; x < self.tiles.gridSize.width; x++ )
+        {
+            // 2
+            CGPoint tileCoordinate = CGPointMake(x, y);
+            // 3
+            MapTileType tileType = [self.tiles tileTypeAt:tileCoordinate];
+            // 4
+            if ( tileType != MapTileTypeNone )
+            {
+                // 5
+                SKTexture *tileTexture = [self.tileAtlas textureNamed:[NSString stringWithFormat:@"%li", tileType]];
+                SKSpriteNode *tile = [SKSpriteNode spriteNodeWithTexture:tileTexture];
+                // 6
+                tile.position = [self convertMapCoordinateToWorldCoordinate:CGPointMake(tileCoordinate.x, tileCoordinate.y)];
+                // 7
+                [self addChild:tile];
+            }
+        }
+    }
+}
+
+- (CGPoint) convertMapCoordinateToWorldCoordinate:(CGPoint)mapCoordinate
+{
+    return CGPointMake(mapCoordinate.x * self.tileSize,  (self.tiles.gridSize.height - mapCoordinate.y) * self.tileSize);
 }
 
 @end
