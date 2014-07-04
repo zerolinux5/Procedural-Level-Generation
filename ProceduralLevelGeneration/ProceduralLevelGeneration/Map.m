@@ -88,6 +88,7 @@
 {
     self.tiles = [[MapTiles alloc] initWithGridSize:self.gridSize];
     [self generateTileGrid];
+    [self generateWalls];
     [self generateTiles];
 }
 
@@ -125,6 +126,39 @@
 - (CGPoint) convertMapCoordinateToWorldCoordinate:(CGPoint)mapCoordinate
 {
     return CGPointMake(mapCoordinate.x * self.tileSize,  (self.tiles.gridSize.height - mapCoordinate.y) * self.tileSize);
+}
+
+- (void) generateWalls
+{
+    // 1
+    for ( NSInteger y = 0; y < self.tiles.gridSize.height; y++ )
+    {
+        for ( NSInteger x = 0; x < self.tiles.gridSize.width; x++ )
+        {
+            CGPoint tileCoordinate = CGPointMake(x, y);
+            
+            // 2
+            if ( [self.tiles tileTypeAt:tileCoordinate] == MapTileTypeFloor )
+            {
+                for ( NSInteger neighbourY = -1; neighbourY < 2; neighbourY++ )
+                {
+                    for ( NSInteger neighbourX = -1; neighbourX < 2; neighbourX++ )
+                    {
+                        if ( !(neighbourX == 0 && neighbourY == 0) )
+                        {
+                            CGPoint coordinate = CGPointMake(x + neighbourX, y + neighbourY);
+                            
+                            // 3
+                            if ( [self.tiles tileTypeAt:coordinate] == MapTileTypeNone )
+                            {
+                                [self.tiles setTileType:MapTileTypeWall at:coordinate];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @end
