@@ -26,6 +26,7 @@
 		449AF6D617B52CAD0004289F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 449AF6D517B52CAD0004289F /* Images.xcassets */; };
 		EAB95017196768420024639F /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB95016196768420024639F /* Map.m */; };
 		EAB9501A196769780024639F /* MapTiles.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB95019196769780024639F /* MapTiles.m */; };
+		EAB9501D19676F240024639F /* FloorMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB9501C19676F240024639F /* FloorMaker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		EAB95016196768420024639F /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
 		EAB95018196769780024639F /* MapTiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTiles.h; sourceTree = "<group>"; };
 		EAB95019196769780024639F /* MapTiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTiles.m; sourceTree = "<group>"; };
+		EAB9501B19676F240024639F /* FloorMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloorMaker.h; sourceTree = "<group>"; };
+		EAB9501C19676F240024639F /* FloorMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorMaker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,8 @@
 				EAB95016196768420024639F /* Map.m */,
 				EAB95018196769780024639F /* MapTiles.h */,
 				EAB95019196769780024639F /* MapTiles.m */,
+				EAB9501B19676F240024639F /* FloorMaker.h */,
+				EAB9501C19676F240024639F /* FloorMaker.m */,
 			);
 			path = ProceduralLevelGeneration;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAB95017196768420024639F /* Map.m in Sources */,
+				EAB9501D19676F240024639F /* FloorMaker.m in Sources */,
 				448D6B0117B7D011002FA381 /* DPad.m in Sources */,
 				EAB9501A196769780024639F /* MapTiles.m in Sources */,
 				449AF6D217B52CAD0004289F /* MyScene.m in Sources */,
