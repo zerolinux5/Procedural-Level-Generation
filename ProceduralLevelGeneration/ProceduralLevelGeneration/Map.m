@@ -30,6 +30,10 @@
     if (( self = [super init] ))
     {
         self.gridSize = gridSize;
+        self.maxFloorCount = 110;
+        self.turnResistance = 20;
+        self.floorMakerSpawnProbability = 25;
+        self.maxFloorMakerCount = 5;
         _spawnPoint = CGPointZero;
         _exitPoint = CGPointZero;
         self.tileAtlas = [SKTextureAtlas atlasNamed:@"tiles"];
@@ -59,7 +63,9 @@
         [self.floorMakers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         FloorMaker *floorMaker = (FloorMaker *)obj;
         // 3
-        floorMaker.direction = [self randomNumberBetweenMin:1 andMax:4];
+            if ( floorMaker.direction == 0 || [self randomNumberBetweenMin:0 andMax:100] <= self.turnResistance ){
+                floorMaker.direction = [self randomNumberBetweenMin:1 andMax:4];
+            }
         CGPoint newPosition;
         // 4
         switch ( floorMaker.direction )
@@ -88,7 +94,8 @@
             currentFloorCount++;
             _exitPoint = [self convertMapCoordinateToWorldCoordinate:floorMaker.currentPosition];
         }
-            if ( [self randomNumberBetweenMin:0 andMax:100] <= 50 )
+            if ( [self randomNumberBetweenMin:0 andMax:100] <= self.floorMakerSpawnProbability &&
+                [self.floorMakers count] < self.maxFloorMakerCount )
             {
                 FloorMaker *newFloorMaker = [[FloorMaker alloc] initWithCurrentPosition:floorMaker.currentPosition andDirection:[self randomNumberBetweenMin:1 andMax:4]];
                 

@@ -46,7 +46,10 @@ static const CGFloat kPlayerMovementSpeed = 100.0f;
         
         // Create a new map
         self.map = [[Map alloc] initWithGridSize:CGSizeMake(48, 48)];
-        self.map.maxFloorCount = 64;
+        self.map.maxFloorCount = 110;
+        self.map.turnResistance = 20;
+        self.map.floorMakerSpawnProbability = 25;
+        self.map.maxFloorMakerCount = 5;
         [self.map generate];
         
         // Create the exit

@@ -14,6 +14,9 @@
 @property (nonatomic, readonly) CGPoint spawnPoint;
 @property (nonatomic, readonly) CGPoint exitPoint;
 @property (nonatomic) NSUInteger maxFloorCount;
+@property (nonatomic) NSUInteger turnResistance;
+@property (nonatomic) NSUInteger floorMakerSpawnProbability;
+@property (nonatomic) NSUInteger maxFloorMakerCount;
 
 + (instancetype) mapWithGridSize:(CGSize)gridSize;
 - (instancetype) initWithGridSize:(CGSize)gridSize;
