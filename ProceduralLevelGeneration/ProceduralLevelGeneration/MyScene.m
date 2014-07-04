@@ -50,6 +50,9 @@ static const CGFloat kPlayerMovementSpeed = 100.0f;
         self.map.turnResistance = 20;
         self.map.floorMakerSpawnProbability = 25;
         self.map.maxFloorMakerCount = 5;
+        self.map.roomProbability = 20;
+        self.map.roomMinSize = CGSizeMake(2, 2);
+        self.map.roomMaxSize = CGSizeMake(6, 6);
         [self.map generate];
         
         // Create the exit

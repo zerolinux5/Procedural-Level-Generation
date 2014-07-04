@@ -17,6 +17,10 @@
 @property (nonatomic) NSUInteger turnResistance;
 @property (nonatomic) NSUInteger floorMakerSpawnProbability;
 @property (nonatomic) NSUInteger maxFloorMakerCount;
+@property (nonatomic) NSUInteger roomProbability;
+@property (nonatomic) CGSize roomMinSize;
+@property (nonatomic) CGSize roomMaxSize;
+
 
 + (instancetype) mapWithGridSize:(CGSize)gridSize;
 - (instancetype) initWithGridSize:(CGSize)gridSize;

@@ -34,6 +34,9 @@
         self.turnResistance = 20;
         self.floorMakerSpawnProbability = 25;
         self.maxFloorMakerCount = 5;
+        self.roomProbability = 20;
+        self.roomMinSize = CGSizeMake(2, 2);
+        self.roomMaxSize = CGSizeMake(6, 6);
         _spawnPoint = CGPointZero;
         _exitPoint = CGPointZero;
         self.tileAtlas = [SKTextureAtlas atlasNamed:@"tiles"];
@@ -92,6 +95,16 @@
             floorMaker.currentPosition = newPosition;
             [self.tiles setTileType:MapTileTypeFloor at:floorMaker.currentPosition];
             currentFloorCount++;
+            if ( [self randomNumberBetweenMin:0 andMax:100] <= self.roomProbability )
+            {
+                NSUInteger roomSizeX = [self randomNumberBetweenMin:self.roomMinSize.width
+                                                             andMax:self.roomMaxSize.width];
+                NSUInteger roomSizeY = [self randomNumberBetweenMin:self.roomMinSize.height
+                                                             andMax:self.roomMaxSize.height];
+                
+                currentFloorCount += [self generateRoomAt:floorMaker.currentPosition
+                                                 withSize:CGSizeMake(roomSizeX, roomSizeY)];
+            }
             _exitPoint = [self convertMapCoordinateToWorldCoordinate:floorMaker.currentPosition];
         }
             if ( [self randomNumberBetweenMin:0 andMax:100] <= self.floorMakerSpawnProbability &&
@@ -232,6 +245,34 @@
             }
         }
     }
+}
+
+- (NSUInteger) generateRoomAt:(CGPoint)position withSize:(CGSize)size
+{
+    NSUInteger numberOfFloorsGenerated = 0;
+    for ( NSUInteger y = 0; y < size.height; y++)
+    {
+        for ( NSUInteger x = 0; x < size.width; x++ )
+        {
+            CGPoint tilePosition = CGPointMake(position.x + x, position.y + y);
+            
+            if ( [self.tiles tileTypeAt:tilePosition] == MapTileTypeInvalid )
+            {
+                continue;
+            }
+            
+            if ( ![self.tiles isEdgeTileAt:tilePosition] )
+            {
+                if ( [self.tiles tileTypeAt:tilePosition] == MapTileTypeNone )
+                {
+                    [self.tiles setTileType:MapTileTypeFloor at:tilePosition];
+                    
+                    numberOfFloorsGenerated++;
+                }
+            }
+        }
+    }
+    return numberOfFloorsGenerated;
 }
 
 @end
