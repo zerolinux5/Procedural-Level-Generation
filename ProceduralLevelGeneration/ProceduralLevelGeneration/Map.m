@@ -15,6 +15,7 @@
 @property (nonatomic) MapTiles *tiles;
 @property (nonatomic) SKTextureAtlas *tileAtlas;
 @property (nonatomic) CGFloat tileSize;
+@property (nonatomic) NSMutableArray *floorMakers;
 @end
 
 @implementation Map
@@ -45,11 +46,18 @@
     CGPoint startPoint = CGPointMake(self.tiles.gridSize.width / 2, self.tiles.gridSize.height / 2);
     // 1
     [self.tiles setTileType:MapTileTypeFloor at:startPoint];
-    NSUInteger currentFloorCount = 1;
+    //NSUInteger currentFloorCount = 1;
     // 2
-    FloorMaker* floorMaker = [[FloorMaker alloc] initWithCurrentPosition:startPoint andDirection:0];
+    //FloorMaker* floorMaker = [[FloorMaker alloc] initWithCurrentPosition:startPoint andDirection:0];
+    
+    __block NSUInteger currentFloorCount = 1;
+    self.floorMakers = [NSMutableArray array];
+    [self.floorMakers addObject:[[FloorMaker alloc] initWithCurrentPosition:startPoint andDirection:0]];
+    
     while ( currentFloorCount < self.maxFloorCount )
     {
+        [self.floorMakers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        FloorMaker *floorMaker = (FloorMaker *)obj;
         // 3
         floorMaker.direction = [self randomNumberBetweenMin:1 andMax:4];
         CGPoint newPosition;
@@ -77,10 +85,11 @@
             floorMaker.currentPosition = newPosition;
             [self.tiles setTileType:MapTileTypeFloor at:floorMaker.currentPosition];
             currentFloorCount++;
+            _exitPoint = [self convertMapCoordinateToWorldCoordinate:floorMaker.currentPosition];
         }
+        }];
     }
     // 6
-    _exitPoint = [self convertMapCoordinateToWorldCoordinate:floorMaker.currentPosition];
     // 7
     NSLog(@"%@", [self.tiles description]);
     _spawnPoint = [self convertMapCoordinateToWorldCoordinate:startPoint];
