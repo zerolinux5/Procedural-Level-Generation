@@ -13,7 +13,6 @@
 		448D6AFA17B7C98C002FA381 /* tiles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 448D6AF917B7C98C002FA381 /* tiles.atlas */; };
 		448D6AFC17B7C9A3002FA381 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 448D6AFB17B7C9A3002FA381 /* sprites.atlas */; };
 		448D6B0117B7D011002FA381 /* DPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 448D6B0017B7CAA3002FA381 /* DPad.m */; };
-		448F951B17B988DD00C1E2B6 /* MapTiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 448F951A17B988DD00C1E2B6 /* MapTiles.m */; };
 		449AF6B717B52CAD0004289F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449AF6B617B52CAD0004289F /* Foundation.framework */; };
 		449AF6B917B52CAD0004289F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449AF6B817B52CAD0004289F /* CoreGraphics.framework */; };
 		449AF6BB17B52CAD0004289F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449AF6BA17B52CAD0004289F /* UIKit.framework */; };
@@ -26,6 +25,7 @@
 		449AF6D217B52CAD0004289F /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 449AF6D117B52CAD0004289F /* MyScene.m */; };
 		449AF6D617B52CAD0004289F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 449AF6D517B52CAD0004289F /* Images.xcassets */; };
 		EAB95017196768420024639F /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB95016196768420024639F /* Map.m */; };
+		EAB9501A196769780024639F /* MapTiles.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB95019196769780024639F /* MapTiles.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,6 @@
 		448D6AFB17B7C9A3002FA381 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		448D6AFF17B7CAA3002FA381 /* DPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPad.h; sourceTree = "<group>"; };
 		448D6B0017B7CAA3002FA381 /* DPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPad.m; sourceTree = "<group>"; };
-		448F951917B988DD00C1E2B6 /* MapTiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTiles.h; sourceTree = "<group>"; };
-		448F951A17B988DD00C1E2B6 /* MapTiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTiles.m; sourceTree = "<group>"; };
 		449AF6B317B52CAD0004289F /* ProceduralLevelGeneration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProceduralLevelGeneration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		449AF6B617B52CAD0004289F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		449AF6B817B52CAD0004289F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,6 +56,8 @@
 		449AF6DC17B52CAD0004289F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		EAB95015196768420024639F /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		EAB95016196768420024639F /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
+		EAB95018196769780024639F /* MapTiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTiles.h; sourceTree = "<group>"; };
+		EAB95019196769780024639F /* MapTiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTiles.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +123,6 @@
 				448D6AFF17B7CAA3002FA381 /* DPad.h */,
 				448D6B0017B7CAA3002FA381 /* DPad.m */,
 				449AF6CA17B52CAD0004289F /* Main.storyboard */,
-				448F951917B988DD00C1E2B6 /* MapTiles.h */,
-				448F951A17B988DD00C1E2B6 /* MapTiles.m */,
 				449AF6D017B52CAD0004289F /* MyScene.h */,
 				449AF6D117B52CAD0004289F /* MyScene.m */,
 				4414DA7517BD27D400E3CE36 /* Sound */,
@@ -134,6 +132,8 @@
 				449AF6CE17B52CAD0004289F /* ViewController.m */,
 				EAB95015196768420024639F /* Map.h */,
 				EAB95016196768420024639F /* Map.m */,
+				EAB95018196769780024639F /* MapTiles.h */,
+				EAB95019196769780024639F /* MapTiles.m */,
 			);
 			path = ProceduralLevelGeneration;
 			sourceTree = "<group>";
@@ -226,9 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				448F951B17B988DD00C1E2B6 /* MapTiles.m in Sources */,
 				EAB95017196768420024639F /* Map.m in Sources */,
 				448D6B0117B7D011002FA381 /* DPad.m in Sources */,
+				EAB9501A196769780024639F /* MapTiles.m in Sources */,
 				449AF6D217B52CAD0004289F /* MyScene.m in Sources */,
 				449AF6CF17B52CAD0004289F /* ViewController.m in Sources */,
 				449AF6C917B52CAD0004289F /* AppDelegate.m in Sources */,

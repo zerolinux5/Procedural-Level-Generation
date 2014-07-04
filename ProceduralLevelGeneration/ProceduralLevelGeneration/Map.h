@@ -13,6 +13,7 @@
 @property (nonatomic) CGSize gridSize;
 @property (nonatomic, readonly) CGPoint spawnPoint;
 @property (nonatomic, readonly) CGPoint exitPoint;
+@property (nonatomic) NSUInteger maxFloorCount;
 
 + (instancetype) mapWithGridSize:(CGSize)gridSize;
 - (instancetype) initWithGridSize:(CGSize)gridSize;
